@@ -5,9 +5,7 @@ import { Route, Router } from "react-router-dom";
 import { Provider } from "react-redux";
 import { ConnectedDashboard } from "./Dashboard";
 import { ConnectedNavigation } from "./Navigation";
-// import { ConnectedLogin } from './Login'
-// import { ConnectedSignup } from './Signup'
-// import { ConnectedTaskDetail } from './TaskDetail'
+import { ConnectedTaskDetail } from "./TaskDetail";
 import { history } from "../store/history";
 
 export const Main = () => (
@@ -16,6 +14,11 @@ export const Main = () => (
       <div>
         <ConnectedNavigation />
         <Route exact path="/dashboard" render={() => <ConnectedDashboard />} />
+        <Route
+          exact
+          path="/task/:id"
+          render={({ match }) => <ConnectedTaskDetail match={match} />}
+        />
       </div>
     </Provider>
   </Router>
